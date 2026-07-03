@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Warrior World Health & Performance Society — AI-Powered Assistive Technology for Invisible Disabilities</title>
+<style>
+:root {
+  --bg: #0a0a0f;
+  --surface: #111118;
+  --surface2: #181825;
+  --gold: #c9a84c;
+  --gold-dim: #a08030;
+  --green: #2ecc71;
+  --green-dim: #1a8a4a;
+  --blue: #3b82f6;
+  --text: #e8e8ee;
+  --text-dim: #9999bb;
+  --text-muted: #555570;
+  --border: #1e1e30;
+  --font: 'Inter', system-ui, -apple-system, sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:var(--font);
+  line-height:1.7;
+  -webkit-font-smoothing:antialiased;
+}
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  background:rgba(10,10,15,0.85);backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border);
+  padding:16px 32px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+nav .logo{font-weight:800;font-size:15px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);}
+nav .logo span{display:block;font-size:9px;letter-spacing:3px;color:var(--text-muted);font-weight:400;}
+nav .links{display:flex;gap:24px;font-size:13px;font-weight:500;}
+nav .links a{color:var(--text-dim);text-decoration:none;transition:color 0.2s;letter-spacing:0.5px;}
+nav .links a:hover{color:var(--gold);}
+section{padding:100px 24px;max-width:1100px;margin:0 auto;}
+.section-label{
+  font-size:11px;text-transform:uppercase;letter-spacing:3px;color:var(--gold);
+  margin-bottom:8px;font-weight:600;
+}
+h2{font-size:36px;font-weight:800;margin-bottom:20px;line-height:1.2;}
+h2 em{color:var(--gold);font-style:normal;}
+.lead{font-size:18px;color:var(--text-dim);max-width:680px;line-height:1.7;}
+
+#hero{
+  min-height:100vh;display:flex;align-items:center;
+  position:relative;overflow:hidden;padding-top:80px;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background:radial-gradient(ellipse 80% 60% at 50% 40%, rgba(201,168,76,0.06), transparent),
+              radial-gradient(ellipse 60% 50% at 80% 60%, rgba(59,130,246,0.04), transparent);
+  pointer-events:none;
+}
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;position:relative;z-index:1;}
+.hero-badge{
+  display:inline-block;padding:6px 16px;border-radius:100px;
+  background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.2);
+  font-size:11px;text-transform:uppercase;letter-spacing:1.5px;color:var(--gold);margin-bottom:24px;
+}
+.hero h1{font-size:52px;font-weight:900;line-height:1.1;margin-bottom:24px;}
+.hero h1 .highlight{background:linear-gradient(135deg,var(--gold),#e8c84a);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.hero p{font-size:17px;color:var(--text-dim);max-width:520px;line-height:1.7;margin-bottom:32px;}
+.hero-ctas{display:flex;gap:12px;flex-wrap:wrap;}
+.btn-primary{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:14px 28px;border-radius:10px;background:var(--gold);color:#0a0a0f;
+  font-size:14px;font-weight:700;text-decoration:none;border:none;cursor:pointer;
+  transition:all 0.2s;
+}
+.btn-primary:hover{transform:translateY(-1px);box-shadow:0 8px 30px rgba(201,168,76,0.25);}
+.btn-outline{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:14px 28px;border-radius:10px;background:transparent;color:var(--text);
+  font-size:14px;font-weight:600;text-decoration:none;border:1px solid var(--border);
+  cursor:pointer;transition:all 0.2s;
+}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold);}
+.hero-stats{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.hero-stat{
+  background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:24px;text-align:center;
+}
+.hero-stat .num{font-size:36px;font-weight:900;color:var(--gold);}
+.hero-stat .label{font-size:12px;color:var(--text-dim);margin-top:4px;text-transform:uppercase;letter-spacing:1px;}
+.hero-stat .sub{font-size:11px;color:var(--text-muted);margin-top:2px;}
+
+#story{background:var(--surface);}
+.story-content{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;margin-top:32px;}
+.story-text p{font-size:16px;color:var(--text-dim);margin-bottom:16px;line-height:1.8;}
+.story-highlight{
+  background:var(--surface2);border:1px solid var(--border);border-radius:12px;
+  padding:24px;margin-top:16px;border-left:3px solid var(--gold);
+}
+.story-highlight p{font-size:14px;margin-bottom:4px;color:var(--text);}
+.story-highlight .source{font-size:12px;color:var(--text-muted);}
+
+.proof-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:32px;}
+.proof-card{
+  background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:28px;text-align:center;
+  transition:transform 0.2s;
+}
+.proof-card:hover{transform:translateY(-2px);}
+.proof-card .icon{font-size:36px;margin-bottom:12px;}
+.proof-card .stat{font-size:40px;font-weight:900;color:var(--gold);}
+.proof-card .stat-label{font-size:14px;color:var(--text);margin:4px 0 8px;}
+.proof-card .stat-detail{font-size:12px;color:var(--text-muted);line-height:1.5;}
+
+#innovation{background:var(--surface);}
+.pillar-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:32px;}
+.pillar-card{
+  background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:32px;position:relative;overflow:hidden;
+}
+.pillar-card .num{font-size:48px;font-weight:900;color:rgba(201,168,76,0.06);position:absolute;top:12px;right:20px;line-height:1;}
+.pillar-card .icon{font-size:32px;margin-bottom:16px;display:block;}
+.pillar-card h3{font-size:17px;font-weight:700;margin-bottom:8px;}
+.pillar-card p{font-size:13px;color:var(--text-dim);line-height:1.7;}
+.pillar-card .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px;}
+.pillar-card .tag{
+  padding:3px 10px;border-radius:100px;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;
+  background:rgba(201,168,76,0.1);color:var(--gold);
+}
+
+.team-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;margin-top:32px;}
+.team-card{
+  background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:24px;text-align:center;
+}
+.team-card .avatar{
+  width:64px;height:64px;border-radius:50%;margin:0 auto 12px;
+  background:var(--surface2);display:flex;align-items:center;justify-content:center;
+  font-size:24px;font-weight:700;color:var(--gold);
+}
+.team-card .name{font-size:15px;font-weight:700;}
+.team-card .role{font-size:12px;color:var(--gold);margin:2px 0 8px;}
+.team-card .bio{font-size:12px;color:var(--text-dim);line-height:1.6;}
+.team-card.star{border-color:var(--gold);position:relative;}
+.team-card.star::after{
+  content:'★ THE HERO';position:absolute;top:-8px;right:16px;
+  font-size:9px;font-weight:700;letter-spacing:1px;
+  background:var(--gold);color:#0a0a0f;padding:2px 10px;border-radius:4px;
+}
+
+#grants{background:var(--surface);}
+.grant-table{width:100%;border-collapse:collapse;font-size:13px;margin-top:24px;}
+.grant-table th{
+  text-align:left;padding:12px 16px;color:var(--text-dim);
+  font-size:11px;text-transform:uppercase;letter-spacing:1px;border-bottom:1px solid var(--border);
+  font-weight:600;
+}
+.grant-table td{padding:14px 16px;border-bottom:1px solid var(--border);vertical-align:top;}
+.grant-table tr:hover td{background:var(--surface2);}
+.grant-amount{font-weight:700;color:var(--gold);white-space:nowrap;}
+.grant-status{padding:2px 10px;border-radius:100px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;display:inline-block;}
+.grant-status.target{background:rgba(59,130,246,0.12);color:var(--blue);}
+.grant-package{
+  background:var(--surface2);border:1px solid var(--border);border-radius:12px;
+  padding:28px;margin-top:24px;text-align:center;
+}
+.grant-package p{font-size:14px;color:var(--text-dim);margin-bottom:12px;}
+.grant-package .big-num{font-size:42px;font-weight:900;color:var(--gold);}
+
+#contact{text-align:center;}
+.contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;margin-top:32px;max-width:700px;margin-left:auto;margin-right:auto;}
+.contact-card{
+  background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:24px;text-align:center;
+}
+.contact-card .icon{font-size:24px;margin-bottom:8px;}
+.contact-card .label{font-size:12px;color:var(--text-dim);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;}
+.contact-card .value{font-size:15px;font-weight:600;color:var(--text);text-decoration:none;}
+.contact-card .value:hover{color:var(--gold);}
+
+footer{
+  border-top:1px solid var(--border);padding:40px 24px;text-align:center;
+  font-size:12px;color:var(--text-muted);max-width:1100px;margin:0 auto;
+}
+footer .legal{font-size:11px;margin-top:8px;}
+
+@media(max-width:768px){
+  nav .links{display:none;}
+  .hero-grid{grid-template-columns:1fr;}
+  .hero h1{font-size:32px;}
+  .hero-stats{grid-template-columns:1fr 1fr;}
+  .story-content{grid-template-columns:1fr;}
+  .proof-grid{grid-template-columns:1fr;}
+  .pillar-grid{grid-template-columns:1fr;}
+  h2{font-size:26px;}
+  .grant-table{font-size:11px;}
+  .grant-table th,.grant-table td{padding:8px;}
+  .grant-table td:nth-child(3),.grant-table th:nth-child(3){display:none;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">⚔️ WARRIOR WORLD<span>HEALTH &amp; PERFORMANCE SOCIETY</span></div>
+  <div class="links">
+    <a href="#story">Story</a>
+    <a href="#proof">Proof</a>
+    <a href="#innovation">Innovation</a>
+    <a href="#team">Team</a>
+    <a href="#grants">Grants</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid">
+    <div>
+      <div class="hero-badge">BC Non-Profit Society &middot; Est. 2026</div>
+      <h1>AI-Powered Assistive Technology for<br><span class="highlight">Invisible Disabilities</span></h1>
+      <p>We're proving what the medical system couldn't. 8 invisible disabilities. 90 days on camera. Every metric tracked. A scalable, data-proven model for recovery — built for warriors, backed by science, and ready for national impact.</p>
+      <div class="hero-ctas">
+        <a href="#grants" class="btn-primary">📊 Our Grant Portfolio</a>
+        <a href="#story" class="btn-outline">Read Our Story →</a>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="num">75%</div><div class="label">Pain Reduction</div><div class="sub">1 session, physiotherapist-verified</div></div>
+      <div class="hero-stat"><div class="num">6 wk</div><div class="label">vs 6 mo prognosis</div><div class="sub">4 PEMF sessions, shattered shoulder</div></div>
+      <div class="hero-stat"><div class="num">8</div><div class="label">Invisible Disabilities</div><div class="sub">Tracked, measured, treated</div></div>
+      <div class="hero-stat"><div class="num">$35M+</div><div class="label">Grant Target</div><div class="sub">Federal · Provincial · Municipal</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- STORY -->
+<section id="story">
+  <div class="section-label">The Origin</div>
+  <h2>It started with a <em>car accident</em></h2>
+  <div class="story-content">
+    <div class="story-text">
+      <p><strong>January 2021.</strong> A car accident changed everything. The doctors said Chelsy Koya would be lucky to stand — let alone walk.</p>
+      <p>Her husband Prince refused to accept that. He started filming <em>everything</em>. Every practitioner visit. Every workout. Every meal. Every protocol. He built a system of evidence because the system had no answers.</p>
+      <p>The community rallied. The City of New Westminster raised over <strong>$10,000</strong> for Chelsy's recovery. A movement was born.</p>
+      <p>That movement became <strong>Warrior World</strong>. What started as one husband fighting for his wife is now a data-proven, AI-powered platform helping people with invisible disabilities across Canada.</p>
+      <p><strong>This is not a testimonial. This is clinical proof on camera.</strong></p>
+      <div class="story-highlight">
+        <p>"If the system can't save the person you love most, you build your own system. So I did."</p>
+        <div class="source">— Prince Koya, Founder</div>
+      </div>
+    </div>
+    <div class="story-text">
+      <p>Chelsy is not a patient in our program. <strong>She is the reason the program exists.</strong> Her journey from "unlikely to stand" to active recovery is the living proof that cellular restoration works.</p>
+      <p>Today, she serves as a Director of the Warrior World Health &amp; Performance Society — turning her personal fight into a scalable system for every warrior after her.</p>
+      <div class="story-highlight" style="border-left-color:var(--blue);">
+        <p><strong>💰 $10,000+</strong> raised by the City of New Westminster for Chelsy's recovery</p>
+        <p><strong>📍</strong> Warrior World Headquarters, Clayton Heights, BC</p>
+        <p><strong>🎥</strong> 90-day clinical documentary · Every session filmed · Radical transparency</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROOF -->
+<section id="proof">
+  <div class="section-label">Evidence &amp; Outcomes</div>
+  <h2>Results are not <em>opinions</em></h2>
+  <p class="lead">Every number on this page was generated by real treatments, tracked by real devices, and verified by licensed medical practitioners.</p>
+  <div class="proof-grid">
+    <div class="proof-card">
+      <div class="icon">🦴</div>
+      <div class="stat">75%</div>
+      <div class="stat-label">Pain Reduction</div>
+      <div class="stat-detail">Measured after a single PEMF session. Verified by Grant Storzuk, clinic owner and physiotherapist, 10+ years clinical experience.</div>
+    </div>
+    <div class="proof-card">
+      <div class="icon">⚡</div>
+      <div class="stat">6 Weeks</div>
+      <div class="stat-label">vs 6 Months Prognosis</div>
+      <div class="stat-detail">Fractured shoulder in three places. After 4 PEMF sessions: range of motion restored in 6 weeks. Documented on camera.</div>
+    </div>
+    <div class="proof-card">
+      <div class="icon">🧠</div>
+      <div class="stat">8</div>
+      <div class="stat-label">Invisible Disabilities</div>
+      <div class="stat-detail">Degenerative disc, PTSD, TBI, TMJ, nerve damage, chronic pain, sleep apnea, BPH. All tracked with biometric data.</div>
+    </div>
+    <div class="proof-card">
+      <div class="icon">📊</div>
+      <div class="stat">92%</div>
+      <div class="stat-label">Rotation Restored</div>
+      <div class="stat-detail">Objective mobility measurement. Before-and-after documented by a licensed physiotherapist.</div>
+    </div>
+    <div class="proof-card">
+      <div class="icon">🏥</div>
+      <div class="stat">Health Canada</div>
+      <div class="stat-label">Approved Medical Device</div>
+      <div class="stat-detail">Class II medical device. Swiss engineered, German manufactured. 284 conditions supported by peer-reviewed research.</div>
+    </div>
+    <div class="proof-card">
+      <div class="icon">👥</div>
+      <div class="stat">10+</div>
+      <div class="stat-label">Active Warriors</div>
+      <div class="stat-detail">Athletes currently tracking through our AI platform. Real-time data on HRV, sleep, pain, mobility.</div>
+    </div>
+  </div>
+</section>
+
+<!-- INNOVATION -->
+<section id="innovation">
+  <div class="section-label">How It Works</div>
+  <h2>Three pillars. <em>One system.</em></h2>
+  <p class="lead">Ancient healing meets modern AI, proven with clinical data. This is not alternative medicine. This is medicine's next frontier.</p>
+  <div class="pillar-grid">
+    <div class="pillar-card">
+      <span class="num">01</span>
+      <span class="icon">🤖</span>
+      <h3>AI-Powered Platform</h3>
+      <p>Machine learning tools that help warriors organize treatment plans, predict recovery trajectories, track biometrics, and connect with practitioners. Reduces the cognitive load of managing multiple invisible disabilities.</p>
+      <div class="tags"><span class="tag">NRC IRAP</span><span class="tag">ATP</span><span class="tag">CDAP</span></div>
+    </div>
+    <div class="pillar-card">
+      <span class="num">02</span>
+      <span class="icon">🔬</span>
+      <h3>PEMF Therapy</h3>
+      <p>Pulsed Electromagnetic Field therapy delivers cellular-level stimulation. Health Canada approved. 284 conditions documented. Every session logged with device settings, frequencies, and durations for full clinical traceability.</p>
+      <div class="tags"><span class="tag">Health Canada</span><span class="tag">Class II</span><span class="tag">Clinical</span></div>
+    </div>
+    <div class="pillar-card">
+      <span class="num">03</span>
+      <span class="icon">🎬</span>
+      <h3>Clinical Documentary</h3>
+      <p>90 consecutive days of filmed treatment. 8 invisible disabilities. Every session public. Every metric transparent. No editing, no spin. The most documented recovery in Canadian health history.</p>
+      <div class="tags"><span class="tag">Creative BC</span><span class="tag">CMF</span><span class="tag">Telefilm</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section id="team">
+  <div class="section-label">Leadership</div>
+  <h2>The people behind the <em>proof</em></h2>
+  <div class="team-grid">
+    <div class="team-card star">
+      <div class="avatar">CK</div>
+      <div class="name">Chelsy Koya</div>
+      <div class="role">Director · Warrior World Society</div>
+      <div class="bio">The reason this mission exists. Car accident survivor. From "unlikely to stand" to active recovery. Her journey is the living proof that cellular restoration works. Now she leads the society that will help millions.</div>
+    </div>
+    <div class="team-card">
+      <div class="avatar">PK</div>
+      <div class="name">Prince Koya</div>
+      <div class="role">Founder · Project PEMF Warrior</div>
+      <div class="bio">Former pro wrestling champion. Survived a career-ending neck injury and 8 invisible disabilities. Refused the prognosis. Built the system. Films every session. His body is the laboratory.</div>
+    </div>
+    <div class="team-card">
+      <div class="avatar">KC</div>
+      <div class="name">Kevin Cairns</div>
+      <div class="role">Director · Warrior World Society</div>
+      <div class="bio">Known as GI Honey throughout the warrior community. Brings operational and technical expertise. He eats his own cooking — every protocol, every tool, every system.</div>
+    </div>
+    <div class="team-card">
+      <div class="avatar">CI</div>
+      <div class="name">Clint Instace</div>
+      <div class="role">Rage Against Depression · Warrior Advocate</div>
+      <div class="bio">Mental health warrior and advocate. Fighting the invisible battle against depression with the same radical transparency and data-driven approach that defines the Warrior World mission.</div>
+    </div>
+    <div class="team-card">
+      <div class="avatar">GS</div>
+      <div class="name">Grant Storzuk</div>
+      <div class="role">Physiotherapist · Clinic Owner</div>
+      <div class="bio">"75% pain reduction in one session. I've been doing this for over a decade. When I saw what this device did, I had to document it."</div>
+    </div>
+    <div class="team-card">
+      <div class="avatar">DA</div>
+      <div class="name">Dr. Adam</div>
+      <div class="role">Medical Director</div>
+      <div class="bio">Overseeing the medical protocol. Ensuring every treatment meets clinical standards and every data point is independently verifiable.</div>
+    </div>
+  </div>
+</section>
+
+<!-- GRANTS -->
+<section id="grants">
+  <div class="section-label">Funding &amp; Partnerships</div>
+  <h2>A <em>grant-ready</em> organization</h2>
+  <p class="lead">Every program we run has a corresponding grant pathway. We don't ask for charity. We ask for investment in a proven, scalable model.</p>
+  <table class="grant-table">
+    <tr><th>Grant Program</th><th>Source</th><th>Amount</th><th>Status</th><th>Use of Funds</th></tr>
+    <tr><td><strong>NRC IRAP AI Assist</strong></td><td>Federal / NRC</td><td class="grant-amount">$750K - $10.5M</td><td><span class="grant-status target">Targeting</span></td><td>AI platform development</td></tr>
+    <tr><td><strong>Enabling Accessibility Fund</strong></td><td>Federal / ISED</td><td class="grant-amount">Up to $200K</td><td><span class="grant-status target">Targeting</span></td><td>Warrior House renovation</td></tr>
+    <tr><td><strong>BC Gaming Capital Project</strong></td><td>BC Government</td><td class="grant-amount">$20K - $250K</td><td><span class="grant-status target">Targeting</span></td><td>Equipment + facility upgrades</td></tr>
+    <tr><td><strong>Accessible Technology Program</strong></td><td>Federal / ISED</td><td class="grant-amount">$75K - $1.5M</td><td><span class="grant-status target">Targeting</span></td><td>AI assistive tools for disabilities</td></tr>
+    <tr><td><strong>Creative BC Production Program</strong></td><td>BC / Creative BC</td><td class="grant-amount">$50K - $200K</td><td><span class="grant-status target">Targeting</span></td><td>Documentary post-production</td></tr>
+    <tr><td><strong>Canada Digital Adoption Program</strong></td><td>Federal / ISED</td><td class="grant-amount">$15K + $100K loan</td><td><span class="grant-status target">Targeting</span></td><td>Digital infrastructure + AI adoption</td></tr>
+    <tr><td><strong>SR&amp;ED Tax Credits</strong></td><td>Federal / CRA</td><td class="grant-amount">35% of R&amp;D spend</td><td><span class="grant-status target">Targeting</span></td><td>Cash back on AI development</td></tr>
+  </table>
+  <div class="grant-package">
+    <p>Total Grant Target</p>
+    <div class="big-num">$2M - $35M+</div>
+    <p style="font-size:13px;margin-top:8px;">Across federal, provincial, and municipal programs over 18 months</p>
+    <a href="#contact" class="btn-primary" style="margin-top:16px;">📄 Request Our Grant Package →</a>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-label">Get In Touch</div>
+  <h2>Let's build something <em>unforgettable</em></h2>
+  <p class="lead" style="margin:0 auto 8px;">We don't want your spare change. We want a conversation about scale.</p>
+  <p style="font-size:14px;color:var(--text-dim);margin-bottom:24px;">Grant decision makers, elected officials, foundations — reach out directly.</p>
+  <div class="contact-grid">
+    <div class="contact-card"><div class="icon">📞</div><div class="label">Phone</div><a href="tel:6049068311" class="value">604-906-8311</a></div>
+    <div class="contact-card"><div class="icon">📧</div><div class="label">Email</div><a href="mailto:info@warriorworld.life" class="value">info@warriorworld.life</a></div>
+    <div class="contact-card"><div class="icon">📍</div><div class="label">Location</div><span class="value">Clayton Heights, BC</span></div>
+  </div>
+  <p style="font-size:13px;color:var(--text-muted);margin-top:32px;">
+    <strong>Warrior World Health &amp; Performance Society</strong> · BC Non-Profit Society · CRA Charitable Registration Pending
+  </p>
+</section>
+
+<footer>
+  <p>⚔️ Warrior World Health &amp; Performance Society</p>
+  <p class="legal">British Columbia Society · Est. 2026 · AI-Powered Assistive Technology for Invisible Disabilities</p>
+  <p class="legal">Not medical advice. Results may vary. All data documented and verified by licensed practitioners.</p>
+</footer>
+
+</body>
+</html>
